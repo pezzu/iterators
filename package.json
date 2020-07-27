@@ -1,0 +1,22 @@
+{
+  "name": "iterators",
+  "version": "0.0.1",
+  "description": "Small and simple collection of iterators",
+  "main": "iterators.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "iterators",
+    "collections"
+  ],
+  "author": {
+    "name": "Peter Sukhenko",
+    "url": "https://github.com/pezzu"
+  },
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
