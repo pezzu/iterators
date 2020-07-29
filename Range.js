@@ -18,3 +18,5 @@ class Range {
     // return new Range(this.begin, this.end)
   }
 }
+
+module.exports = Range;
