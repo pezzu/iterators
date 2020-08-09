@@ -25,31 +25,48 @@ describe('Support for iteration protocols', () => {
   })
 
   it('Iterable: spread...', () => {
- 
+    const source = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    const buckets = new Bucket(source, 2)
+    expect([...buckets]).toEqual([[0, 1], [2, 3], [4, 5], [6, 7], [8, 9]])
   })
 })
 
 describe('Create buckets out of array', () => {
   it('Crates buckets of provided size', () => {
+    const source = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    const buckets = new Bucket(source, 3)
+    expect([...buckets]).toEqual([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
 
   })
 
   it('Fills last bucket with left elements', () => {
-
+    const source = [0, 1, 2, 3, 4, 5, 6]
+    const buckets = new Bucket(source, 3)
+    expect([...buckets]).toEqual([[0, 1, 2], [3, 4, 5], [6]])
   })
 
   it('Creates single bucket if bucketSize <= source.lenght', () => {
+    const source = [0, 1, 2, 3, 4, 5, 6]
+    const buckets = new Bucket(source, 10)
+    expect([...buckets]).toEqual([[0, 1, 2, 3, 4, 5, 6]])
+  })
 
+  it('Respects bucketSize == 1', () => {
+    const source = [0, 1, 2, 3, 4, 5]
+    const buckets = new Bucket(source, 1)
+    expect([...buckets]).toEqual([[0], [1], [2], [3], [4], [5]])
   })
 })
 
 describe('Treats edge cases with respect', () => {
   it('Returns iterator to original source it bucketSize is 0', () => {
-
+    const source = [0, 1, 2, 3, 4, 5]
+    const buckets = new Bucket(source, 0)
+    expect([...buckets]).toEqual([0, 1, 2, 3, 4, 5])
   })
 
   it('Throws if bucketSize is undefined or not provided', () => {
-
+    expect(new Bucket([0, 1, 2, 3, 4, 5])).toThrow('TypeError')
   })
 })
 
