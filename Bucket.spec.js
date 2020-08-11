@@ -66,11 +66,11 @@ describe('Treats edge cases with respect', () => {
   // })
 
   it('Throws if bucketSize is undefined or not provided', () => {
-    expect(new Bucket([0, 1, 2, 3, 4, 5])).toThrow('TypeError')
+    expect(() => new Bucket([0, 1, 2, 3, 4, 5])).toThrow(TypeError)
   })
 
   it('Throws if bucketSize negative', () => {
-    expect(new Bucket([0, 1, 2, 3, 4, 5], -2)).toThrow('TypeError')
+    expect(() => new Bucket([0, 1, 2, 3, 4, 5], -2)).toThrow(TypeError)
   })
 })
 

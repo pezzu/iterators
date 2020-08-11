@@ -1,5 +1,8 @@
 class Bucket {
-  constructor(array, bucketSize = 1) {
+  constructor(array, bucketSize) {
+    if (typeof bucketSize === 'undefined' || bucketSize < 0) {
+      throw new TypeError('bucketSize parameter should be defined and >=0')
+    }
     this.array = array
     this.bucketSize = bucketSize
     this.index = 0
