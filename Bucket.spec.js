@@ -17,7 +17,7 @@ describe('Support for iteration protocols', () => {
     for (let i = 0; i < source.length; i += 2) {
       const next = buckets.next()
       expect(next.value).toEqual([i, i + 1])
-      epxect(next.done).toBe(false)
+      expect(next.done).toBe(false)
     }
     const last = buckets.next()
     expect(last.value).toBeUndefined()
@@ -59,14 +59,18 @@ describe('Create buckets out of array', () => {
 })
 
 describe('Treats edge cases with respect', () => {
-  it('Returns iterator to original source it bucketSize is 0', () => {
-    const source = [0, 1, 2, 3, 4, 5]
-    const buckets = new Bucket(source, 0)
-    expect([...buckets]).toEqual([0, 1, 2, 3, 4, 5])
-  })
+  // it('Returns iterator to original source it bucketSize is 0', () => {
+  //   const source = [0, 1, 2, 3, 4, 5]
+  //   const buckets = new Bucket(source, 0)
+  //   expect([...buckets]).toEqual([0, 1, 2, 3, 4, 5])
+  // })
 
   it('Throws if bucketSize is undefined or not provided', () => {
     expect(new Bucket([0, 1, 2, 3, 4, 5])).toThrow('TypeError')
+  })
+
+  it('Throws if bucketSize negative', () => {
+    expect(new Bucket([0, 1, 2, 3, 4, 5], -2)).toThrow('TypeError')
   })
 })
 

@@ -1,13 +1,22 @@
 class Bucket {
-  constructor(source, bucketSize = 1) {
-    this.source = source
+  constructor(array, bucketSize = 1) {
+    this.array = array
     this.bucketSize = bucketSize
     this.index = 0
-    this.bucketNumber = 0
   }
 
   next() {
-    
+    if (this.index < this.array.length) {
+      const next = {
+        value: this.array.slice(this.index, this.index + this.bucketSize),
+        done: false
+      }
+      this.index += this.bucketSize
+      return next
+    }
+    else {
+      return { value: undefined, done: true }
+    }
   }
 
   [Symbol.iterator]() {
@@ -15,4 +24,4 @@ class Bucket {
   }
 }
 
-module.exports = BucketIterator
+module.exports = Bucket
