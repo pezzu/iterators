@@ -45,13 +45,13 @@ describe('Create buckets out of array', () => {
     expect([...buckets]).toEqual([[0, 1, 2], [3, 4, 5], [6]])
   })
 
-  it('Creates single bucket if bucketSize <= source.lenght', () => {
+  it('Creates single bucket if size <= source.lenght', () => {
     const source = [0, 1, 2, 3, 4, 5, 6]
     const buckets = new Bucket(source, 10)
     expect([...buckets]).toEqual([[0, 1, 2, 3, 4, 5, 6]])
   })
 
-  it('Respects bucketSize == 1', () => {
+  it('Respects size == 1', () => {
     const source = [0, 1, 2, 3, 4, 5]
     const buckets = new Bucket(source, 1)
     expect([...buckets]).toEqual([[0], [1], [2], [3], [4], [5]])
@@ -59,17 +59,17 @@ describe('Create buckets out of array', () => {
 })
 
 describe('Treats edge cases with respect', () => {
-  // it('Returns iterator to original source it bucketSize is 0', () => {
+  // it('Returns iterator to original source it size is 0', () => {
   //   const source = [0, 1, 2, 3, 4, 5]
   //   const buckets = new Bucket(source, 0)
   //   expect([...buckets]).toEqual([0, 1, 2, 3, 4, 5])
   // })
 
-  it('Throws if bucketSize is undefined or not provided', () => {
+  it('Throws if size is undefined or not provided', () => {
     expect(() => new Bucket([0, 1, 2, 3, 4, 5])).toThrow(TypeError)
   })
 
-  it('Throws if bucketSize negative', () => {
+  it('Throws if size negative', () => {
     expect(() => new Bucket([0, 1, 2, 3, 4, 5], -2)).toThrow(TypeError)
   })
 })

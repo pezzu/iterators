@@ -1,20 +1,20 @@
 class Bucket {
-  constructor(array, bucketSize) {
-    if (typeof bucketSize === 'undefined' || bucketSize < 0) {
-      throw new TypeError('bucketSize parameter should be defined and >=0')
+  constructor(array, size) {
+    if (typeof size === 'undefined' || size < 0) {
+      throw new TypeError('size parameter should be defined and non-negative')
     }
     this.array = array
-    this.bucketSize = bucketSize
+    this.size = size
     this.index = 0
   }
 
   next() {
     if (this.index < this.array.length) {
       const next = {
-        value: this.array.slice(this.index, this.index + this.bucketSize),
+        value: this.array.slice(this.index, this.index + this.size),
         done: false
       }
-      this.index += this.bucketSize
+      this.index += this.size
       return next
     }
     else {
