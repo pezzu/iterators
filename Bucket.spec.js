@@ -67,11 +67,9 @@ describe('Create buckets out of array', () => {
 })
 
 describe('Treats edge cases with respect', () => {
-  // it('Returns iterator to original source it size is 0', () => {
-  //   const source = [0, 1, 2, 3, 4, 5]
-  //   const buckets = new Bucket(source, 0)
-  //   expect([...buckets]).toEqual([0, 1, 2, 3, 4, 5])
-  // })
+  it('throws if size is 0', () => {
+    expect(() => new Bucket([0, 1, 2, 3, 4, 5], 0)).toThrow(TypeError)
+  })
 
   it('Throws if size is undefined or not provided', () => {
     expect(() => new Bucket([0, 1, 2, 3, 4, 5])).toThrow(TypeError)

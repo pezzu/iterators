@@ -1,7 +1,7 @@
 class Bucket {
   constructor(array, size) {
-    if (typeof size === 'undefined' || size < 0) {
-      throw new TypeError('size parameter should be defined and non-negative')
+    if (typeof size === 'undefined' || size <= 0) {
+      throw new TypeError('size parameter should be defined and greater than 0')
     }
     this.array = array
     this.size = size
