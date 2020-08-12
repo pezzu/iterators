@@ -25,7 +25,14 @@ describe('Support for iteration protocols', () => {
 
   it('Iterable: spread...', () => {
     const range = new Range(0, 3)
-    expect([...range]).toEqual([0,1,2])
+    expect([...range]).toEqual([0, 1, 2])
+  })
+
+  it('Not restartable', () => {
+    const range = new Range(0, 5)
+    range.next()
+    range.next()
+    expect([...range]).toEqual([2, 3, 4])
   })
 })
 
@@ -48,7 +55,7 @@ describe('Build sequences', () => {
 
   it('Creates proper number sequence in between', () => {
     const range = new Range(1, 5)
-    expect([...range]).toEqual([1,2,3,4])
+    expect([...range]).toEqual([1, 2, 3, 4])
   })
 
   it('Defaults beginnig to 0', () => {
