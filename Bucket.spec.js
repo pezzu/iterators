@@ -29,6 +29,14 @@ describe('Support for iteration protocols', () => {
     const buckets = new Bucket(source, 2)
     expect([...buckets]).toEqual([[0, 1], [2, 3], [4, 5], [6, 7], [8, 9]])
   })
+
+  it('Not restartable', () => {
+    const source = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    const buckets = new Bucket(source, 2)
+    buckets.next()
+    buckets.next()
+    expect([...buckets]).toEqual([[4, 5], [6, 7], [8, 9]])
+  })
 })
 
 describe('Create buckets out of array', () => {
