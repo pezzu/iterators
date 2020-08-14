@@ -1,4 +1,4 @@
-class Bucket {
+class Chunk {
   constructor(array, size) {
     if (typeof size === 'undefined' || size <= 0) {
       throw new TypeError('size parameter should be defined and greater than 0')
@@ -27,4 +27,4 @@ class Bucket {
   }
 }
 
-module.exports = Bucket
+module.exports = Chunk
