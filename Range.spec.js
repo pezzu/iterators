@@ -1,19 +1,20 @@
+/* eslint-env jest */
+
 const Range = require('./Range')
 
 describe('Support for iteration protocols', () => {
   it('Iterable: for...of', () => {
     const range = new Range(0, 3)
     let i = 0
-    for(let v of range) {
+    for (const v of range) {
       expect(v).toBe(i)
       i++
     }
-
   })
 
   it('Iterator: next()', () => {
     const range = new Range(0, 3)
-    for(let i=0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
       const next = range.next()
       expect(next.value).toBe(i)
       expect(next.done).toBe(false)
@@ -44,9 +45,9 @@ describe('Build sequences', () => {
 
   it('Ends at the end, exluding', () => {
     const range = new Range(1, 5)
-    let last = undefined
+    let last
     let next = range.next()
-    while(!next.done) {
+    while (!next.done) {
       last = next.value
       next = range.next()
     }
@@ -68,4 +69,3 @@ describe('Build sequences', () => {
     expect(range.end).toEqual(Infinity)
   })
 })
-

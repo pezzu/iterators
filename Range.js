@@ -1,22 +1,22 @@
 class Range {
-  constructor(begin = 0, end = Infinity) {
-    this.begin = begin;
-    this.end = end;
-    this.index = begin;
+  constructor (begin = 0, end = Infinity) {
+    this.begin = begin
+    this.end = end
+    this.index = begin
   }
 
-  next() {
+  next () {
     if (this.index < this.end) {
-      return {value: this.index++, done: false}
+      return { value: this.index++, done: false }
     } else {
-      return {done: true}
+      return { done: true }
     }
   }
 
-  [Symbol.iterator]() {
-    return this;
+  [Symbol.iterator] () {
+    return this
     // return new Range(this.begin, this.end)
   }
 }
 
-module.exports = Range;
+module.exports = Range

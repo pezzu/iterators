@@ -1,13 +1,15 @@
+/* eslint-env jest */
+
 const Chunk = require('./Chunk')
 
 describe('Support for iteration protocols', () => {
   it('Iterable: for...of', () => {
     const source = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     const chunk = new Chunk(source, 2)
-    let i = 0;
-    for (let b of chunk) {
+    let i = 0
+    for (const b of chunk) {
       expect(b).toEqual([i, i + 1])
-      i+=2
+      i += 2
     }
   })
 
@@ -44,7 +46,6 @@ describe('Create chunks out of array', () => {
     const source = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     const chunk = new Chunk(source, 3)
     expect([...chunk]).toEqual([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
-
   })
 
   it('Fills last bucket with left elements', () => {
@@ -79,4 +80,3 @@ describe('Treats edge cases with respect', () => {
     expect(() => new Chunk([0, 1, 2, 3, 4, 5], -2)).toThrow(TypeError)
   })
 })
-

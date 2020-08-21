@@ -1,5 +1,5 @@
 class Chunk {
-  constructor(array, size) {
+  constructor (array, size) {
     if (typeof size === 'undefined' || size <= 0) {
       throw new TypeError('size parameter should be defined and greater than 0')
     }
@@ -8,7 +8,7 @@ class Chunk {
     this.index = 0
   }
 
-  next() {
+  next () {
     if (this.index < this.array.length) {
       const next = {
         value: this.array.slice(this.index, this.index + this.size),
@@ -16,14 +16,13 @@ class Chunk {
       }
       this.index += this.size
       return next
-    }
-    else {
+    } else {
       return { value: undefined, done: true }
     }
   }
 
-  [Symbol.iterator]() {
-    return this;
+  [Symbol.iterator] () {
+    return this
   }
 }
 
