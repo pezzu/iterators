@@ -13,3 +13,5 @@ class Circle {
     return this
   }
 }
+
+module.exports = Circle
