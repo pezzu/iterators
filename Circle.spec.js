@@ -5,9 +5,9 @@ const Circle = require('./Circle')
 describe('Support for iteration protocols', () => {
   it('Iterable: for...of', () => {
     const source = [0, 1, 2]
-    const circle = new Circle(source)    
+    const circle = new Circle(source)
     let i = 0
-    let expected = [0, 1, 2]
+    const expected = [0, 1, 2]
     for (const b of circle) {
       expect(b).toEqual(expected[i++])
       if (i >= expected.length) break
@@ -17,7 +17,7 @@ describe('Support for iteration protocols', () => {
   it('Iterator: next()', () => {
     const source = [0, 1, 2]
     const circle = new Circle(source)
-    let expected = [0, 1, 2, 0, 1, 2, 0, 1, 2]
+    const expected = [0, 1, 2, 0, 1, 2, 0, 1, 2]
     for (let i = 0; i < expected.length; i += 1) {
       const next = circle.next()
       expect(next.value).toEqual(expected[i])

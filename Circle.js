@@ -1,10 +1,10 @@
 class Circle {
-  constructor(source) {
+  constructor (source) {
     this.source = source
     this.index = 0
   }
 
-  next() {
+  next () {
     if (this.index >= this.source.length) this.index = 0
     return { value: this.source[this.index++], done: false }
   }
